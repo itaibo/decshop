@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: any }) {
       <div className='border-b p-3 pl-10 flex gap-10'>
         <Logo small />
         <Suspense>
-          <Search className='max-w-[300px]' />
+          <Search className='max-w-[400px]' />
         </Suspense>
       </div>
       <div>
