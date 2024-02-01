@@ -48,7 +48,10 @@ export default function ItemPage({ params }: { params: { id: string } }) {
 
           <div className='border-b border-gray-200 mt-3 mb-3'></div>
 
-          <div>{product.description}</div>
+          <div className='text-slate-600 text-sm'>
+            Categoría: <Link href={'/items?search=' + product.category}>{categoryToHuman(product.category)}</Link>
+          </div>
+          <div className='mt-2'>{product.description}</div>
         </div>
 
         <div className='md:w-1/4 border rounded-md p-5 w-full'>
