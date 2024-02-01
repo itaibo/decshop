@@ -1,0 +1,30 @@
+import { Logo } from '@/components/Logo';
+import { Search } from '@/components/Search';
+import * as Database from '@/infrastructure/database';
+import Link from 'next/link';
+
+export default function Home() {
+  const topProducts = Database.getTopProducts(5);
+
+  return (
+    <div className='h-screen flex items-center justify-center'>
+      <div className='mt-[-100px] m5-900 w-[90%] max-w-[450px] flex items-center justify-stretch flex-col gap-7'>
+        <Logo className='flex-grow' />
+        <Search className='flex-grow' />
+
+        <div className='w-full text-center mt-3'>
+          <div className='text-xs text-slate-600'>Los mejores productos:</div>
+          <div className='mt-1'>
+            { topProducts.map((product, key) => {
+              return (
+                <Link key={key} href={'/items/' + product.id}>
+                  <div className='text-sm mr-2 ml-2 inline hover:text-orange-400 duration-300'>{product.title}</div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
