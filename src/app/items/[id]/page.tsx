@@ -89,7 +89,6 @@ export default function ItemPage({ params }: { params: { id: string } }) {
           </div>
         </>
       }
-
     </div>
   );
 }
