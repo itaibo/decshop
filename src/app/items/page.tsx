@@ -11,8 +11,8 @@ export async function generateMetadata({ searchParams }: Params) {
   const searchQuery = searchParams.search;
 
   return {
-      title: (searchQuery ? `Decshop: ${searchQuery}` : 'Decshop - Todos los artículos'),
-    };
+    title: (searchQuery ? `Decshop: ${searchQuery}` : 'Decshop - Todos los artículos'),
+  };
 }
 
 export default function ItemsPage({ searchParams }: Params) {

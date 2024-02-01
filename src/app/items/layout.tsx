@@ -34,7 +34,7 @@ export default function Layout({ children }: { children: any }) {
 }
 
 function MenuLink({ children }: { children: string }) {
-  return (<div className='text-sm delay-300 cursor-pointer hover:text-slate-700'>{children}</div>);
+  return (<div className='text-sm hover:text-orange-400 duration-300 cursor-pointer'>{children}</div>);
 }
 
 function Wrapper({ children, className }: { children: any, className?: string }) {

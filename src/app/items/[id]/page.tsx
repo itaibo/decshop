@@ -6,6 +6,12 @@ import { categoryToHuman, getOriginalPrice } from '@/lib/utils';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+type Params = {
+  params: {
+    id: string;
+  };
+};
+
 export async function generateStaticParams() {
   const products = Database.getProducts();
  
@@ -14,7 +20,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ItemPage({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: Params) {
+  const product = Database.getProduct(parseInt(params.id));
+
+  return {
+    title: (product ? `${product.title} - Decshop` : 'No encontrado - Decshop'),
+  };
+}
+
+export default function ItemPage({ params }: Params) {
   const product = Database.getProduct(parseInt(params.id));
 
   if (!product) {
@@ -49,7 +63,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
           <div className='border-b border-gray-200 mt-3 mb-3'></div>
 
           <div className='text-slate-600 text-sm'>
-            Categoría: <Link href={'/items?search=' + product.category}>{categoryToHuman(product.category)}</Link>
+            Categoría: <Link className='hover:text-slate-700 duration-300' href={'/items?search=' + product.category}>{categoryToHuman(product.category)}</Link>
           </div>
           <div className='mt-2'>{product.description}</div>
 
