@@ -40,7 +40,7 @@ export function ProductTile({ product }: { product: Product }) {
           </div>
 
           { product.stock < 50 &&
-            <div className='text-rose-700	text-sm pt-1 mt-2'>{product.stock === 1 ? 'Queda 1 unidad' : `Quedan ${product.stock} unidades`} </div>
+            <div className='text-rose-700	text-sm pt-1 mt-2'>{product.stock === 1 ? 'Queda 1 unidad' : `Quedan ${product.stock} unidades`}</div>
           }
         </div>
       </div>

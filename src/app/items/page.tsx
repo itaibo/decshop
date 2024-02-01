@@ -21,7 +21,7 @@ export default function ItemsPage({ searchParams }: Params) {
   const resultNumber = results.length;
 
   return (
-    <div className='p-10 pt-3 pt-7'>
+    <div>
       { searchQuery && resultNumber > 0 &&
         <div className='text-lg pb-5'>
           Resultados para <span className='font-bold'>{searchQuery}</span> ({resultNumber})
@@ -35,7 +35,7 @@ export default function ItemsPage({ searchParams }: Params) {
       }
 
       { resultNumber > 0 &&
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-20'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {
             results.map((product, key) => <ProductTile key={key} product={product} />)
           }

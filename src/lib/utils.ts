@@ -13,3 +13,8 @@ export function categoryToHuman(string: string): string {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 }
+
+export function getOriginalPrice(currentPrice: number, discount: number): string {
+  const percentaje = discount / 100;
+  return (currentPrice / ( 1 - percentaje)).toFixed(2);
+}

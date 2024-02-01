@@ -11,8 +11,10 @@ export default function Layout({ children }: { children: any }) {
           <Search className='max-w-[400px]' />
         </Suspense>
       </div>
-      <div>
-        {children}
+      <div className='p-10 pt-3 pt-5 pb-20'>
+        <div>
+          {children}
+        </div>
       </div>
     </>
   );
