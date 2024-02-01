@@ -52,6 +52,19 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             Categoría: <Link href={'/items?search=' + product.category}>{categoryToHuman(product.category)}</Link>
           </div>
           <div className='mt-2'>{product.description}</div>
+
+          {/* Some extra text for the demo */}
+          <div className='mt-2'>
+            The {product.title} is a great product from {product.brand} that competes with other products in
+            the {categoryToHuman(product.category)} category.
+          </div>
+          <div className='mt-2'>
+            At a price of just {product.price}€, this product offers a really good quality that you do not
+            find in other similar products from other brands.
+          </div>
+          <div className='mt-2'>
+            Like all the products in Decshop, the {product.title} has a guarantee of at least 2 years.
+          </div>
         </div>
 
         <div className='md:w-1/4 border rounded-md p-5 w-full'>
