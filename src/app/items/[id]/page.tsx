@@ -1,4 +1,5 @@
 import { ImageCarousel } from '@/components/Carousel';
+import { ProductTile } from '@/components/ProductTile';
 import { Button } from '@/components/ui/button';
 import * as Database from '@/infrastructure/database';
 import { categoryToHuman, getOriginalPrice } from '@/lib/utils';
@@ -19,6 +20,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
   if (!product) {
     return notFound();
   }
+
+  const similar = Database.getProducts(product.category).filter(p => p.id !== product.id);
+  const topProducts = Database.getTopProducts(4).filter(p => p.id !== product.id);
 
   return (
     <div>
@@ -42,7 +46,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             <div className='text-md text-slate-600'>{product.rating} <span className='text-amber-400'>★</span></div>
           </div>
 
-          <div className="border-b border-gray-200 mt-3 mb-3"></div>
+          <div className='border-b border-gray-200 mt-3 mb-3'></div>
 
           <div>{product.description}</div>
         </div>
@@ -65,6 +69,27 @@ export default function ItemPage({ params }: { params: { id: string } }) {
           </div>
         </div>
       </div>
+
+      <div className='border-b border-gray-200 mt-10 mb-10'></div>
+
+      { similar.length > 0 &&
+        <>
+          <div className='text-md mb-3'>Productos similares</div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+              { similar.slice(0, 4).map((product, key) => <ProductTile key={key} product={product} />) }
+          </div>
+        </>
+      }
+
+      { similar.length === 0 &&
+        <>
+          <div className='text-md mb-3'>Otros productos</div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+              { topProducts.slice(0, 4).map((product, key) => <ProductTile key={key} product={product} />) }
+          </div>
+        </>
+      }
+
     </div>
   );
 }
