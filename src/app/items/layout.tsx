@@ -40,7 +40,7 @@ function MenuLink({ children }: { children: string }) {
 function Wrapper({ children, className }: { children: any, className?: string }) {
   return (
     <div className='w-full flex justify-center'>
-      <div className={cn('max-w-[1500px] w-full', className)}>
+      <div className={cn('max-w-[1400px] w-full', className)}>
         {children}
       </div>
     </div>
