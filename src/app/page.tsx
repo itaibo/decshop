@@ -20,13 +20,13 @@ export default function Home() {
           <div className='mt-1'>
             { topProducts.map((product, key) => {
               return (
-                <>
-                  <Link key={key} href={'/items/' + product.id}>
+                <div key={key} className='inline'>
+                  <Link href={'/items/' + product.id}>
                     <div className='text-sm mr-2 ml-2 inline hover:text-orange-400 duration-300'>{product.title}</div>
                   </Link> 
                   { key % 2 === 1 && <br/> }
                   { key % 2 === 0 && key !== topProducts.length - 1 && <span className='text-slate-400'>·</span> }
-                </>
+                </div>
               );
             })}
           </div>
