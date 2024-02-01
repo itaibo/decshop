@@ -2,6 +2,7 @@ import { Logo } from '@/components/Logo';
 import { Search } from '@/components/Search';
 import * as Database from '@/infrastructure/database';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export default function Home() {
   const topProducts = Database.getTopProducts(5);
@@ -10,7 +11,9 @@ export default function Home() {
     <div className='h-screen flex items-center justify-center'>
       <div className='mt-[-100px] m5-900 w-[90%] max-w-[450px] flex items-center justify-stretch flex-col gap-7'>
         <Logo className='flex-grow' />
-        <Search className='flex-grow' />
+        <Suspense>
+          <Search className='flex-grow' />
+        </Suspense>
 
         <div className='w-full text-center mt-3'>
           <div className='text-xs text-slate-600'>Los mejores productos:</div>
