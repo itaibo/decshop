@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function ProductTile({ product }: { product: Product }) {
   return (
-    <Link href={'/items/' + product.id}>
+    <Link href={'/items/' + product.id} title={product.title}>
       <div className='border rounded-md h-[390px]'>
         <div className='p-[100px] h-400 relative border-b'>
           <div className='w-full h-full'>

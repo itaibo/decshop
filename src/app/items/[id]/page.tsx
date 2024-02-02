@@ -95,7 +95,7 @@ export default function ItemPage({ params }: Params) {
 
           <div className='flex flex-col gap-3 mt-5'>
             <Button variant={'secondary'}>Añadir a la cesta</Button>
-            <Button className='bg-orange-400 hover:bg-orange-500 duration-300 text-white'>Comprar ya</Button>
+            <Button className='bg-orange-400 hover:bg-orange-500 duration-300 text-black-900'>Comprar ya</Button>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: any }) {
       <div className='border-b p-3 pl-10 pr-10'>
         <Wrapper className='flex justify-between'>
           <div className='flex flex-1 gap-10'>
-            <Logo small />
+            <Logo small className='min-w-[100px]'/>
             <Suspense>
               <Search className='max-w-[400px]' />
             </Suspense>
