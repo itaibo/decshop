@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 export default function Layout({ children }: { children: any }) {
   return (
     <>
-      <div className='border-b p-3 pl-10 pr-10'>
+      <div className='border-b p-3 pl-10 pr-10 bg-white'>
         <Wrapper className='flex justify-between'>
           <div className='flex flex-1 gap-10'>
             <Logo small className='min-w-[100px]'/>
