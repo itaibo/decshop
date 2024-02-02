@@ -25,9 +25,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Params) {
   const product = Database.getProduct(parseInt(params.id));
 
+  if (!product) {
+    return {
+      title: 'No encontrado - Decshop',
+    };
+  }
+
   return {
-    title: (product ? `${product.title} - Decshop` : 'No encontrado - Decshop'),
-    description: (product ? product.description : 'Compra artículos de la mejor calidad`'),
+    title:  `${product.title} - Decshop`,
+    description: product.description,
+    openGraph: {
+      images: product.thumbnail,
+    },
   };
 }
 

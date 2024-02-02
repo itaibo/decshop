@@ -21,7 +21,7 @@ export function ShareItem({ product }: { product: Database.Product }) {
     <>
       <div className='text-sm'>Comparte el producto</div>
 
-      <div className='flex mt-2 items-center justify-center gap-1'>
+      <div className='flex mt-2 items-center justify-center gap-2'>
         <EmailShareButton
           url={url}
         >
