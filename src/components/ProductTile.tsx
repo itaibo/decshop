@@ -3,7 +3,10 @@ import { categoryToHuman } from '@/lib/utils';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 
-export function ProductTile({ product }: { product: Product }) {
+export function ProductTile({ product, key }: { product: Product, key: number }) {
+  // Load faster the first images in viewport
+  const loadFast = key === 0 || key === 1;
+
   return (
     <Link href={'/items/' + product.id} title={`Imagen de ${product.title}`}>
       <div className='border rounded-md h-[390px]'>
@@ -15,6 +18,7 @@ export function ProductTile({ product }: { product: Product }) {
               layout={'fill'}
               objectFit={'cover'}
               className='rounded-tl-md rounded-tr-md'
+              priority={loadFast}
             ></Image>
           </div>
         </div>
