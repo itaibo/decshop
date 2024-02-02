@@ -62,7 +62,7 @@ export default function ItemsPage({ searchParams }: Params) {
       { resultNumber > 0 &&
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {
-            results.map((product, key) => <ProductTile key={key} product={product} />)
+            results.map((product, key) => <ProductTile key={key} index={key} product={product} />)
           }
         </div>
       }

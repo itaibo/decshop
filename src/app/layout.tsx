@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Decshop - Decenas de artículos de la mejor calidad',
   description: 'Compra artículos de la mejor calidad',
+  metadataBase: new URL('https://' + process.env.VERCEL_URL),
 };
 
 export default function RootLayout({

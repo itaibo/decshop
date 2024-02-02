@@ -5,9 +5,9 @@ import Link from 'next/link';
 
 const LOW_STOCK_BELOW = 50;
 
-export function ProductTile({ product, key }: { product: Product, key: number }) {
+export function ProductTile({ product, index }: { product: Product, index?: number }) {
   // Load with priority the 2 first images in viewport
-  const loadFast = key === 0 || key === 1;
+  const loadFast = !!(index && (index === 0 || index === 1));
 
   return (
     <Link href={'/items/' + product.id} title={product.title}>
