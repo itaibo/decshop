@@ -8,13 +8,13 @@ export function ProductTile({ product, key }: { product: Product, key: number })
   const loadFast = key === 0 || key === 1;
 
   return (
-    <Link href={'/items/' + product.id} title={`Imagen de ${product.title}`}>
+    <Link href={'/items/' + product.id} title={product.title}>
       <div className='border rounded-md h-[390px]'>
         <div className='p-[100px] h-400 relative border-b'>
           <div className='w-full h-full'>
             <Image
               src={product.thumbnail}
-              alt={product.title}
+              alt={`Imagen de ${product.title}`}
               layout={'fill'}
               objectFit={'cover'}
               className='rounded-tl-md rounded-tr-md'

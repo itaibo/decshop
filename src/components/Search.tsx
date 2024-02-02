@@ -22,7 +22,6 @@ export function Search(props: { small?: boolean, className?: string  }) {
   return (
     <div className={cn('relative w-full', props.className)}>
       <Input
-        className={props.className || ''}
         spellCheck={false}
         placeholder={'Buscar en Decshop'}
         value={searchQuery}

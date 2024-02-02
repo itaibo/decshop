@@ -1,10 +1,15 @@
 import * as Database from '@/infrastructure/database';
 import { ProductTile } from '@/components/ProductTile';
+import { categoryToHuman } from '@/lib/utils';
 
 type Params = {
   searchParams: {
     search?: string;
   };
+};
+
+type ResultNumberPerCategory = {
+  [category: string]: number;
 };
 
 export async function generateMetadata({ searchParams }: Params) {
@@ -20,11 +25,30 @@ export default function ItemsPage({ searchParams }: Params) {
   const results = Database.getProducts(searchQuery);
   const resultNumber = results.length;
 
+  const resultNumberPerCategory = results.reduce((results, product) => {
+    const category = categoryToHuman(product.category);
+    if (!results[category]) results[category] = 0;
+
+    results[category] += 1;
+
+    return results;
+  }, {} as ResultNumberPerCategory);
+
   return (
     <div>
       { searchQuery && resultNumber > 0 &&
-        <div className='text-lg pb-5'>
-          Resultados para <span className='font-bold'>{searchQuery}</span> ({resultNumber})
+        <div className='pb-5'>
+          <div className='text-lg'>
+            Resultados para <span className='font-bold'>{searchQuery}</span> ({resultNumber})
+          </div>
+
+          { Object.keys(resultNumberPerCategory).length > 1 &&
+            <div className='md:flex gap-2 grid grid-cols-2 mt-1'>
+              { Object.entries(resultNumberPerCategory).map((category, key) => (
+                <div className='text-xs text-slate-500'>{category[0]} ({category[1]})</div>
+              ))}
+            </div>
+          }
         </div>
       }
 
