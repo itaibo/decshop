@@ -25,6 +25,7 @@ export default function ItemsPage({ searchParams }: Params) {
   const results = Database.getProducts(searchQuery);
   const resultNumber = results.length;
 
+  // Calculate the number of results per category
   const resultNumberPerCategory = results.reduce((results, product) => {
     const category = categoryToHuman(product.category);
     if (!results[category]) results[category] = 0;

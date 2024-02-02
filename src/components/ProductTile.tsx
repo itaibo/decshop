@@ -3,13 +3,15 @@ import { categoryToHuman } from '@/lib/utils';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 
+const LOW_STOCK_BELOW = 50;
+
 export function ProductTile({ product, key }: { product: Product, key: number }) {
-  // Load faster the first images in viewport
+  // Load with priority the 2 first images in viewport
   const loadFast = key === 0 || key === 1;
 
   return (
     <Link href={'/items/' + product.id} title={product.title}>
-      <div className='border rounded-md h-[390px]'>
+      <div className='border rounded-md h-[390px] bg-white'>
         <div className='p-[100px] h-400 relative border-b'>
           <div className='w-full h-full'>
             <Image
@@ -43,7 +45,7 @@ export function ProductTile({ product, key }: { product: Product, key: number })
             {categoryToHuman(product.category)}
           </div>
 
-          { product.stock < 50 &&
+          { product.stock < LOW_STOCK_BELOW &&
             <div className='text-rose-700	text-sm pt-1 mt-2'>{product.stock === 1 ? 'Queda 1 unidad' : `Quedan ${product.stock} unidades`}</div>
           }
         </div>

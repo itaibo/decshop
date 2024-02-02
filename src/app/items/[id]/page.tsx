@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: Params) {
 
   return {
     title: (product ? `${product.title} - Decshop` : 'No encontrado - Decshop'),
+    description: (product ? product.description : 'Compra artículos de la mejor calidad`'),
   };
 }
 
@@ -47,10 +48,12 @@ export default function ItemPage({ params }: Params) {
       </div>
 
       <div className='flex gap-[30px] items-start flex-col md:flex-row'>
+        {/* Carousel */}
         <div className='w-full md:w-2/4'>
           <ImageCarousel images={product.images.slice(0, 5)} />
         </div>
 
+        {/* Product description */}
         <div className='md:w-2/4 w-full'>
           <div className='text-medium text-xl'>{product.title}</div>
 
@@ -81,6 +84,7 @@ export default function ItemPage({ params }: Params) {
           </div>
         </div>
 
+        {/* Buy box */}
         <div className='md:w-1/4 border rounded-md p-5 w-full'>
           { product.discountPercentage &&
             <div className='flex gap-3'>
@@ -100,6 +104,7 @@ export default function ItemPage({ params }: Params) {
         </div>
       </div>
 
+      {/* Similar / Top products */}
       <div className='border-b border-gray-200 mt-10 mb-10'></div>
 
       { similar.length > 0 &&

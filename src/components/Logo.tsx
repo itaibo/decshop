@@ -9,7 +9,7 @@ export function Logo(props: { small?: boolean, className?: string }) {
         alt={'Decashop'}
         src={logo}
         height={props.small ? 40 : 60}
-        priority={true}
+        priority={true} // Priority to be downloaded
       ></Image>
     </Link>
   );

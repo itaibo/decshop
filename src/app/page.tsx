@@ -1,9 +1,7 @@
 import { Logo } from '@/components/Logo';
 import { Search } from '@/components/Search';
 import { SmallProductTile } from '@/components/SmallProductTile';
-import { Button } from '@/components/ui/button';
 import * as Database from '@/infrastructure/database';
-import Link from 'next/link';
 import { Suspense } from 'react';
 
 export default function Home() {

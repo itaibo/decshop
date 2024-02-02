@@ -22,6 +22,8 @@ type Database = {
 export function getProducts(searchQuery?: string): Product[] {
   if (!searchQuery) return products;
 
+  // Create a searchString combining relevant product information
+  // and see if the given query is present
   const filteredProducts = products.filter(product => {
     const searchString = `${product.title} ${product.description} ${product.brand} ${product.category}`;
     return (searchString.toLowerCase()).includes(searchQuery.toLowerCase());
