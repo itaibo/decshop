@@ -5,6 +5,8 @@ import * as Database from '@/infrastructure/database';
 import { categoryToHuman, getOriginalPrice } from '@/lib/utils';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import { ShareItem } from '@/components/ShareItem';
 
 type Params = {
   params: {
@@ -85,21 +87,29 @@ export default function ItemPage({ params }: Params) {
         </div>
 
         {/* Buy box */}
-        <div className='md:w-1/4 border rounded-md p-5 w-full'>
-          { product.discountPercentage &&
-            <div className='flex gap-3'>
-              <div className='text-sm line-through'>{getOriginalPrice(product.price, product.discountPercentage)}€</div>
-              <div className='text-xs font-medium bg-amber-300 rounded-md p-1 pl-2 pr-2 mt-[-3px]'>-{product.discountPercentage}%</div>
+        <div className='md:w-1/4 w-full flex flex-col gap-3'>
+          <div className='border rounded-md p-5'>
+            { product.discountPercentage &&
+              <div className='flex gap-3'>
+                <div className='text-sm line-through'>{getOriginalPrice(product.price, product.discountPercentage)}€</div>
+                <div className='text-xs font-medium bg-amber-300 rounded-md p-1 pl-2 pr-2 mt-[-3px]'>-{product.discountPercentage}%</div>
+              </div>
+            }
+
+            <div className='text-[30px] mt-1'>{product.price}€</div>
+
+            <div className='text-slate-500 text-sm'>{product.stock === 1 ? 'Queda 1 unidad' : `Quedan ${product.stock} unidades`}</div>
+
+            <div className='flex flex-col gap-3 mt-5'>
+              <Button variant={'secondary'}>Añadir a la cesta</Button>
+              <Button className='bg-orange-400 hover:bg-orange-500 duration-300 text-black-900'>Comprar ya</Button>
             </div>
-          }
+          </div>
 
-          <div className='text-[30px] mt-1'>{product.price}€</div>
-
-          <div className='text-slate-500 text-sm'>{product.stock === 1 ? 'Queda 1 unidad' : `Quedan ${product.stock} unidades`}</div>
-
-          <div className='flex flex-col gap-3 mt-5'>
-            <Button variant={'secondary'}>Añadir a la cesta</Button>
-            <Button className='bg-orange-400 hover:bg-orange-500 duration-300 text-black-900'>Comprar ya</Button>
+          <div className='border rounded-md p-5'>
+            <Suspense>
+              <ShareItem product={product}/>
+            </Suspense>
           </div>
         </div>
       </div>
