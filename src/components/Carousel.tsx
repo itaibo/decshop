@@ -18,10 +18,11 @@ export function ImageCarousel({ images }: { images: string[] }) {
                 <div className='w-full h-full'>
                   <Image
                     src={image}
-                    alt={'Imagen ' + key}
+                    alt={'Imagen ' + (key + 1)}
                     layout={'fill'}
                     objectFit={'cover'}
                     className='rounded-md'
+                    priority={key === 0} // Load first image fast
                   ></Image>
                 </div>
               </div>
@@ -38,7 +39,7 @@ export function ImageCarousel({ images }: { images: string[] }) {
             <div className='w-full h-full'>
               <Image
                 src={image}
-                alt={'Imagen ' + key}
+                alt={'Imagen ' + (key + 1)}
                 layout={'fill'}
                 objectFit={'cover'}
                 className='rounded-md'
