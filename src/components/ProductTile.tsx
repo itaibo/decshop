@@ -26,7 +26,7 @@ export function ProductTile({ product, index }: { product: Product, index?: numb
         </div>
         
         <div className='p-3'>
-          <div className='font-medium text-lg'>{product.title}</div>
+          <div className='font-medium text-lg truncate'>{product.title}</div>
 
           <div className='w-full flex items-start gap-2 items-center'>
             <div className='text-sm text-slate-800 truncate max-w-[70%]'>{product.brand}</div>

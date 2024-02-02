@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Params) {
   }
 
   return {
-    title:  `${product.title} - Decshop`,
+    title: `${product.title} - Decshop`,
     description: product.description,
     openGraph: {
       images: product.thumbnail,

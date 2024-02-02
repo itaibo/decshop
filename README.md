@@ -5,7 +5,7 @@ The online version can be accessed in https://decshop.vercel.app.
 
 It consists of 3 main pages:
 
-1. Home with search box
+1. Home with search box:
   - Route: `/`
   - Description: Displays a search box for product searches. Upon searching, navigate to the Search Results view.
 
