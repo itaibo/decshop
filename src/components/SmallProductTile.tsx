@@ -17,7 +17,7 @@ export function SmallProductTile({ product }: { product: Product }) {
             ></Image>
           </div>
         </div>
-        
+
         <div className='p-3'>
           <div className='font-medium text-sm truncate'>{product.title}</div>
         </div>

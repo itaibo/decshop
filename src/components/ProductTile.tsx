@@ -24,7 +24,7 @@ export function ProductTile({ product, index }: { product: Product, index?: numb
             ></Image>
           </div>
         </div>
-        
+
         <div className='p-3'>
           <div className='font-medium text-lg truncate'>{product.title}</div>
 

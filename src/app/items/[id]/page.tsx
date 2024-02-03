@@ -16,7 +16,7 @@ type Params = {
 
 export async function generateStaticParams() {
   const products = Database.getProducts();
- 
+
   return products.map((product) => ({
     id: product.id.toString(),
   }));
