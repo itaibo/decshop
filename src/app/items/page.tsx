@@ -1,6 +1,6 @@
-import * as Database from '@/infrastructure/database';
-import { ProductTile } from '@/components/ProductTile';
-import { categoryToHuman } from '@/lib/utils';
+import * as Database from "@/infrastructure/database";
+import { ProductTile } from "@/components/ProductTile";
+import { categoryToHuman } from "@/lib/utils";
 
 type Params = {
   searchParams: {
@@ -16,7 +16,9 @@ export async function generateMetadata({ searchParams }: Params) {
   const searchQuery = searchParams.search;
 
   return {
-    title: (searchQuery ? `Decshop: ${searchQuery}` : 'Decshop - Todos los artículos'),
+    title: searchQuery
+      ? `Decshop: ${searchQuery}`
+      : "Decshop - Todos los artículos",
   };
 }
 
@@ -37,43 +39,43 @@ export default function ItemsPage({ searchParams }: Params) {
 
   return (
     <div>
-      { searchQuery && resultNumber > 0 &&
-        <div className='pb-5'>
-          <div className='text-lg'>
-            Resultados para <span className='font-bold'>{searchQuery}</span> ({resultNumber})
+      {searchQuery && resultNumber > 0 && (
+        <div className="pb-5">
+          <div className="text-lg">
+            Resultados para <span className="font-bold">{searchQuery}</span> (
+            {resultNumber})
           </div>
 
-          { Object.keys(resultNumberPerCategory).length > 1 &&
-            <div className='md:flex gap-2 grid grid-cols-2 mt-1'>
-              { Object.entries(resultNumberPerCategory).map((category, key) => (
-                <div className='text-xs text-slate-500'>{category[0]} ({category[1]})</div>
+          {Object.keys(resultNumberPerCategory).length > 1 && (
+            <div className="md:flex gap-2 grid grid-cols-2 mt-1">
+              {Object.entries(resultNumberPerCategory).map((category, key) => (
+                <div className="text-xs text-slate-500">
+                  {category[0]} ({category[1]})
+                </div>
               ))}
             </div>
-          }
+          )}
         </div>
-      }
+      )}
 
-      { !searchQuery &&
-        <div className='text-lg pb-5'>
-          Todos los productos
+      {!searchQuery && <div className="text-lg pb-5">Todos los productos</div>}
+
+      {resultNumber > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {results.map((product, key) => (
+            <ProductTile key={key} index={key} product={product} />
+          ))}
         </div>
-      }
+      )}
 
-      { resultNumber > 0 &&
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-          {
-            results.map((product, key) => <ProductTile key={key} index={key} product={product} />)
-          }
-        </div>
-      }
-
-      { resultNumber === 0 &&
-        <div className='text-center text-lg mt-10'>
+      {resultNumber === 0 && (
+        <div className="text-center text-lg mt-10">
           <div>
-            No se ha encontrado nada para <span className='font-bold'>{searchQuery}</span>
+            No se ha encontrado nada para{" "}
+            <span className="font-bold">{searchQuery}</span>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 }

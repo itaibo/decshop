@@ -1,4 +1,4 @@
-import database from './products.json';
+import database from "./products.json";
 const products = (database as Database).products;
 
 export type Product = {
@@ -24,16 +24,16 @@ export function getProducts(searchQuery?: string): Product[] {
 
   // Create a searchString combining relevant product information
   // and see if the given query is present
-  const filteredProducts = products.filter(product => {
+  const filteredProducts = products.filter((product) => {
     const searchString = `${product.title} ${product.description} ${product.brand} ${product.category}`;
-    return (searchString.toLowerCase()).includes(searchQuery.toLowerCase());
+    return searchString.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   return filteredProducts;
 }
 
 export function getProduct(id: number): Product | undefined {
-  return products.find(product => product.id === id);
+  return products.find((product) => product.id === id);
 }
 
 export function getTopProducts(limit: number = 5) {

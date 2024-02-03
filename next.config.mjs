@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'i.dummyjson.com',
+        hostname: "i.dummyjson.com",
       },
     ],
   },
